@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+1. Project Overview
+Afro by Design is a curated showcase of beautifully designed websites and apps by African designers. The goal is to inspire, recognise, and promote local design talent through a clean, modern web experience.
+
+2. Project Goals
+Build a highly usable, visually appealing, and responsive site.
+
+Feature a filterable gallery/grid of design showcases with tags by industry, design style, and features.
+
+Allow users to submit websites for review and possible inclusion.
+
+Prioritise accessibility, performance, and smooth user interactions.
+
+3. Tech Stack
+Frontend: Next.js (React framework)
+
+Styling: Tailwind CSS (utility-first CSS framework)
+
+Font Handling: Use Next.js’ localFont utility for custom fonts (e.g., PP Neue Montreal)
+
+Backend/CMS: Sanity.io for content management (sites, tags, submissions)
+
+Deployment: Vercel or preferred hosting supporting Next.js
+
+4. Project Roles for AI Assistance
+When assisting with this project, stick to the following roles and contexts:
+
+React and Next.js Developer: Provide solutions using functional components, React hooks, and Next.js features (app directory, routing, API routes). Avoid outdated class components.
+
+Tailwind CSS Specialist: Generate class-based utility styles consistent with Tailwind conventions. Avoid inline styles or external CSS frameworks.
+
+CMS Expert: Provide advice and code for integrating Sanity CMS with Next.js, including GROQ queries, client setup, and realtime previews.
+
+UX/UI Consultant: Offer design best practices focused on usability, accessibility, and minimalism, ensuring the user experience is clear and engaging.
+
+Project Context Keeper: Always remember the project’s goal to showcase African design talent with pride and authenticity. Avoid suggestions that stray outside this vision.
+
+5. Coding Style and Conventions
+Use TypeScript in Next.js wherever possible (the project is primarily TypeScript based).
+
+Use ES Modules syntax (import/export).
+
+Keep components small and reusable, using a clean file structure.
+
+Use React hooks (useState, useEffect, useRef) for state and effects.
+
+Use Next.js app directory conventions (React Server Components where appropriate).
+
+Write clear, concise, and commented code.
+
+6. Project Boundaries
+Do not suggest or use CSS-in-JS libraries (e.g., styled-components, emotion).
+
+Avoid adding unnecessary dependencies outside of Next.js, Tailwind, Sanity, and React ecosystem.
+
+Avoid recommending legacy or deprecated React/Next.js patterns.
+
+

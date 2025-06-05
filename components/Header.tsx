@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center px-4 py-2">
+    <header className="flex sticky top-0 z-50 justify-between items-center px-4 py-2 bg-blue-0">
       <Link href="/">
         <Image
           src="/logo.svg"
@@ -17,7 +17,7 @@ const Header = () => {
       </Link>
       <div className="flex items-center gap-2">
         <Link
-          className="flex w-12 h-12 items-center justify-center gap-2.5 rounded-xl hover:bg-gray-1 transition-colors duration-300"
+          className="flex w-12 h-12 items-center justify-center gap-2.5 rounded-xl hover:bg-gray-10/10 transition-colors duration-300"
           href="https://x.com/afrobydesign"
           target="_blank"
           rel="noopener noreferrer"
@@ -31,8 +31,8 @@ const Header = () => {
           />
         </Link>
         <Link
-          className="flex w-12 h-12 items-center justify-center gap-2.5 rounded-xl hover:bg-gray-1 transition-colors duration-300"
-          href="https://github.com/afrobydesign"
+          className="flex w-12 h-12 items-center justify-center gap-2.5 rounded-xl hover:bg-gray-10/10 transition-colors duration-300"
+          href="https://github.com/roml3n/afrobydesign"
           target="_blank"
           rel="noopener noreferrer"
         >
