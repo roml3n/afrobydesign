@@ -3,7 +3,7 @@
 import FilterBar from "@/components/FilterBar";
 import Hero from "./Hero";
 import SiteGrid from "@/components/SiteGrid";
-import SubmitModal from "@/components/SubmitModal";
+
 
 export default function Home() {
   return (
@@ -13,8 +13,8 @@ export default function Home() {
 
         <FilterBar />
 
-        <SubmitModal/>
         <SiteGrid />
+
 
       </main>
     </div>
