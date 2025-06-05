@@ -11,4 +11,12 @@
   body {
     @apply bg-gray-0 text-gray-10;
   }
+
+  div {
+    @apply border border-red-500;
+  }
+
+  main, h1, p, h2, h3, h4 {
+    @apply border border-yellow-300;
+  }
 }
