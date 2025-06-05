@@ -17,7 +17,7 @@ const filterTags: FilterTagType[] = [
 export default function FilterBar() {
   return (
     <div
-      className="relative w-full bg-white items-start justify-start flex flex-wrap gap-2"
+      className="relative w-full items-start justify-start flex flex-wrap gap-2"
       aria-label="Filter tags"
     >
       {filterTags.map((filterTag) => (
