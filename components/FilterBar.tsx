@@ -10,24 +10,17 @@ type CategoryType = {
 
 export default async function FilterBar() {
   const categories: CategoryType[] = await getCategories();
+  const totalSites = categories.reduce((acc, cat) => acc + cat.count, 0);
 
   return (
-    <div
-      className="relative w-full items-start justify-start flex flex-wrap gap-2"
-      aria-label="Filter tags"
-    >
-      <FilterTag
-        tag="All"
-        count={categories.reduce(
-          (acc: number, cat: CategoryType) => acc + cat.count,
-          0
-        )}
-      />
+    <div className="flex flex-wrap gap-2 w-full" aria-label="Category filters">
+      <FilterTag tag="All" count={totalSites} type="category" />
       {categories.map((category: CategoryType) => (
         <FilterTag
           key={category._id}
           tag={category.name}
           count={category.count}
+          type="category"
         />
       ))}
     </div>

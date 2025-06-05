@@ -6,7 +6,8 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "prod",
   apiVersion: "2024-03-19",
-  useCdn: true,
+  useCdn: process.env.NODE_ENV === "production",
+  perspective: "published",
 });
 
 const builder = imageUrlBuilder(client);
@@ -18,11 +19,7 @@ export function urlFor(source: SanityImageSource) {
 // Query to get all sites with debug logging
 export async function getSites() {
   try {
-    console.log("Attempting to fetch sites with config:", {
-      projectId: client.config().projectId,
-      dataset: client.config().dataset,
-      apiVersion: client.config().apiVersion,
-    });
+    console.log("Fetching sites from Sanity...");
     const sites = await client.fetch(`
       *[_type == "site"] | order(publishedAt desc) {
         _id,
@@ -38,7 +35,15 @@ export async function getSites() {
         "category": category->name
       }
     `);
-    console.log("Sites fetched:", sites);
+    console.log("Sites fetched:", sites?.length || 0, "sites");
+    if (sites?.length > 0) {
+      console.log(
+        "Latest site:",
+        sites[0].title,
+        "published at",
+        sites[0].publishedAt
+      );
+    }
     return sites;
   } catch (error) {
     console.error("Error fetching sites:", error);

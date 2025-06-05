@@ -1,6 +1,11 @@
 import React from "react";
 import SiteCard from "./SiteCard";
-import { getSites } from "@/lib/sanity";
+import {
+  getSites,
+  getSitesByCategory,
+  getSitesByFont,
+  getSitesByTech,
+} from "@/lib/sanity";
 import { Suspense } from "react";
 
 type Site = {
@@ -12,7 +17,8 @@ type Site = {
   slug: string;
   category: string;
   publishedAt: string;
-  views: number;
+  fonts?: string[];
+  techStack?: string[];
 };
 
 function LoadingGrid() {
@@ -28,14 +34,28 @@ function LoadingGrid() {
   );
 }
 
-async function SiteGridContent() {
+async function SiteGridContent({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   try {
-    console.log("Fetching sites from Sanity...");
-    const sites = await getSites();
-    console.log("Sites fetched:", sites);
+    let sites: Site[] = [];
+    const category = searchParams.category as string;
+    const font = searchParams.font as string;
+    const tech = searchParams.tech as string;
+
+    if (category && category !== "All") {
+      sites = await getSitesByCategory(category);
+    } else if (font && font !== "All") {
+      sites = await getSitesByFont(font);
+    } else if (tech && tech !== "All") {
+      sites = await getSitesByTech(tech);
+    } else {
+      sites = await getSites();
+    }
 
     if (!sites || sites.length === 0) {
-      console.log("No sites found in the response");
       return (
         <div className="w-full text-center py-12">
           <p className="text-gray-500">No sites found. Check back later!</p>
@@ -45,19 +65,16 @@ async function SiteGridContent() {
 
     return (
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
-        {sites.map((site: Site) => {
-          console.log("Rendering site:", site);
-          return (
-            <SiteCard
-              key={site._id}
-              thumbnail={site.thumbnail}
-              title={site.title}
-              description={site.description}
-              link={site.externalLink}
-              slug={site.slug}
-            />
-          );
-        })}
+        {sites.map((site: Site) => (
+          <SiteCard
+            key={site._id}
+            thumbnail={site.thumbnail}
+            title={site.title}
+            description={site.description}
+            link={site.externalLink}
+            slug={site.slug}
+          />
+        ))}
       </div>
     );
   } catch (error) {
@@ -72,10 +89,14 @@ async function SiteGridContent() {
   }
 }
 
-export default function SiteGrid() {
+export default function SiteGrid({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   return (
     <Suspense fallback={<LoadingGrid />}>
-      <SiteGridContent />
+      <SiteGridContent searchParams={searchParams} />
     </Suspense>
   );
 }
