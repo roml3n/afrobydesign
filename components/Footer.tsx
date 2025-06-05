@@ -61,8 +61,8 @@ const Footer = () => {
                       className="opacity-40"
                     />
                     <input
-                      type="url"
-                      name="url"
+                      type="email"
+                      name="email"
                       value={formData.url}
                       onChange={handleInputChange}
                       placeholder="Your email address"

@@ -1,30 +1,33 @@
 import React from "react";
 import FilterTag from "./FilterTag";
+import { getCategories } from "@/lib/sanity";
 
-type FilterTagType = {
-  tag: string;
+type CategoryType = {
+  _id: string;
+  name: string;
   count: number;
 };
 
-// Sample data - replace this with your actual data source
-const filterTags: FilterTagType[] = [
-  { tag: "All", count: 120 },
-  { tag: "Design", count: 45 },
-  { tag: "Development", count: 35 },
-  { tag: "Marketing", count: 40 },
-];
+export default async function FilterBar() {
+  const categories: CategoryType[] = await getCategories();
 
-export default function FilterBar() {
   return (
     <div
       className="relative w-full items-start justify-start flex flex-wrap gap-2"
       aria-label="Filter tags"
     >
-      {filterTags.map((filterTag) => (
+      <FilterTag
+        tag="All"
+        count={categories.reduce(
+          (acc: number, cat: CategoryType) => acc + cat.count,
+          0
+        )}
+      />
+      {categories.map((category: CategoryType) => (
         <FilterTag
-          key={filterTag.tag}
-          tag={filterTag.tag}
-          count={filterTag.count}
+          key={category._id}
+          tag={category.name}
+          count={category.count}
         />
       ))}
     </div>

@@ -1,60 +1,81 @@
 import React from "react";
 import SiteCard from "./SiteCard";
+import { getSites } from "@/lib/sanity";
+import { Suspense } from "react";
 
-type SiteCardType = {
-  id: string; // Added for unique key
+type Site = {
+  _id: string;
   thumbnail: string;
   title: string;
   description: string;
-  link: string;
+  externalLink: string;
+  slug: string;
+  category: string;
+  publishedAt: string;
+  views: number;
 };
 
-// Sample data - replace this with your actual data source
-const sites: SiteCardType[] = [
-  {
-    id: "1",
-    thumbnail: "/sample-thumbnail-1.jpg",
-    title: "Modern African Design",
-    description: "A showcase of contemporary designs from African creators ",
-    link: "/",
-  },
-  {
-    id: "2",
-    thumbnail: "/sample-thumbnail-2.jpg",
-    title: "Digital Art Gallery",
-    description: "Exploring digital art from African creators",
-    link: "/",
-  },
-  {
-    id: "3",
-    thumbnail: "/sample-thumbnail-3.jpg",
-    title: "UI/UX Patterns",
-    description: "African-inspired user interface patterns",
-    link: "/",
-  },
-  {
-    id: "4",
-    thumbnail: "/sample-thumbnail-4.jpg",
-    title: "Typography Collection",
-    description: "Curated collection of African typography",
-    link: "/",
-  },
-];
-
-const SiteGrid = () => {
+function LoadingGrid() {
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
-      {sites.map((site) => (
-        <SiteCard
-          key={site.id}
-          thumbnail={site.thumbnail}
-          title={site.title}
-          description={site.description}
-          link={site.link}
+      {[...Array(8)].map((_, i) => (
+        <div
+          key={i}
+          className="aspect-[4/3] bg-gray-100 animate-pulse rounded-lg"
         />
       ))}
     </div>
   );
-};
+}
 
-export default SiteGrid;
+async function SiteGridContent() {
+  try {
+    console.log("Fetching sites from Sanity...");
+    const sites = await getSites();
+    console.log("Sites fetched:", sites);
+
+    if (!sites || sites.length === 0) {
+      console.log("No sites found in the response");
+      return (
+        <div className="w-full text-center py-12">
+          <p className="text-gray-500">No sites found. Check back later!</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
+        {sites.map((site: Site) => {
+          console.log("Rendering site:", site);
+          return (
+            <SiteCard
+              key={site._id}
+              thumbnail={site.thumbnail}
+              title={site.title}
+              description={site.description}
+              link={site.externalLink}
+              slug={site.slug}
+            />
+          );
+        })}
+      </div>
+    );
+  } catch (error) {
+    console.error("Error fetching sites:", error);
+    return (
+      <div className="w-full text-center py-12">
+        <p className="text-red-500">
+          Error loading sites. Please try again later.
+        </p>
+      </div>
+    );
+  }
+}
+
+export default function SiteGrid() {
+  return (
+    <Suspense fallback={<LoadingGrid />}>
+      <SiteGridContent />
+    </Suspense>
+  );
+}
