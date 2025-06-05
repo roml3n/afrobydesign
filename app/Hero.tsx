@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <main className="w-screen flex items-center justify-center bg-gradient-to-b from-blue-0 via-blue-0 to-transparent ">
+    <main className="w-full flex items-center justify-center ">
     <div className="mx-8 py-9 md:py-20 w-full md:w-[60%] flex flex-col gap-4">
       <h1 className="text-center text-3xl md:text-5xl lg:text-6xl font-normal">
         Celebrating African design excellence

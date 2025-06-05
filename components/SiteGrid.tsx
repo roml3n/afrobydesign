@@ -6,6 +6,7 @@ type SiteCardType = {
   thumbnail: string;
   title: string;
   description: string;
+  link: string;
 };
 
 // Sample data - replace this with your actual data source
@@ -15,24 +16,28 @@ const sites: SiteCardType[] = [
     thumbnail: "/sample-thumbnail-1.jpg",
     title: "Modern African Design",
     description: "A showcase of contemporary designs from African creators ",
+    link: "/",
   },
   {
     id: "2",
     thumbnail: "/sample-thumbnail-2.jpg",
     title: "Digital Art Gallery",
     description: "Exploring digital art from African creators",
+    link: "/",
   },
   {
     id: "3",
     thumbnail: "/sample-thumbnail-3.jpg",
     title: "UI/UX Patterns",
     description: "African-inspired user interface patterns",
+    link: "/",
   },
   {
     id: "4",
     thumbnail: "/sample-thumbnail-4.jpg",
     title: "Typography Collection",
     description: "Curated collection of African typography",
+    link: "/",
   },
 ];
 
@@ -45,6 +50,7 @@ const SiteGrid = () => {
           thumbnail={site.thumbnail}
           title={site.title}
           description={site.description}
+          link={site.link}
         />
       ))}
     </div>

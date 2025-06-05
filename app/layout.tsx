@@ -41,7 +41,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={ppNeueMontreal.className}>
-      <body className="min-h-screen bg-gray-0 text-gray-10 antialiased">
+      <body className="relative min-h-screen bg-gray-0 text-gray-10 antialiased">
+        <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-0 via-blue-0 to-transparent" />
         <Header />
         {children}
       </body>

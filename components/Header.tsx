@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Header = () => {
   return (
-    <header className="flex sticky top-0 z-50 justify-between items-center px-4 py-2 bg-blue-0">
+    <header className="flex sticky top-0 z-50 justify-between items-center py-2 mx-auto w-[96%] max-w-[1600px]">
       <Link href="/">
         <Image
           src="/logo.svg"
