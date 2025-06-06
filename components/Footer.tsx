@@ -6,48 +6,13 @@ import React, { useState, FormEvent } from "react";
 const Footer = () => {
   const [formData, setFormData] = useState({
     email: "",
+    url: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-
-    try {
-      const res = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${146330554}/${"7eacb88d-73e6-4c80-acd6-c23f98bc8657"}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fields: [
-              {
-                name: "email",
-                value: formData.email,
-              },
-            ],
-          }),
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to submit form");
-      }
-
-      setSubmitStatus("success");
-      setFormData({ email: "" }); // Reset form after successful submission
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // TODO: Implement your form submission logic here
+    console.log("Form submitted:", formData);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +50,7 @@ const Footer = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                {" "}
                 <div className="relative w-full">
                   <div className="w-full self-stretch p-4 bg-gray-1 rounded-xl flex justify-start items-center gap-2">
                     <Image
@@ -97,33 +63,21 @@ const Footer = () => {
                     <input
                       type="email"
                       name="email"
-                      value={formData.email}
+                      value={formData.url}
                       onChange={handleInputChange}
                       placeholder="Your email address"
                       required
-                      disabled={isSubmitting}
-                      className="w-full bg-transparent text-gray-5 text-base font-normal outline-none placeholder:text-gray-5 disabled:opacity-50"
+                      className="w-full bg-transparent text-gray-5 text-base font-normal outline-none placeholder:text-gray-5"
                       aria-label="Email"
                     />
                   </div>
-                  {submitStatus === "success" && (
-                    <div className="w-full mt-2 p-2 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
-                      Thanks for subscribing!
-                    </div>
-                  )}
-                  {submitStatus === "error" && (
-                    <div className="w-full mt-2 p-2 bg-red-100 border border-red-400 text-red-700 rounded-xl text-center">
-                      Something went wrong. Please try again.
-                    </div>
-                  )}
                 </div>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full text-center bg-gray-10 text-gray-0 rounded-xl py-4 text-base md:text-base hover:bg-gray-9 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-center bg-gray-10 text-gray-0 rounded-xl py-4 text-base md:text-base hover:bg-gray-9 transition-colors"
                   aria-label="Subscribe to newsletter"
                 >
-                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                  Subscribe
                 </button>
               </form>
             </div>

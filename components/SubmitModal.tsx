@@ -8,34 +8,27 @@ const SubmitModal = () => {
     url: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus("idle");
+    setSubmitStatus('idle');
 
     try {
       const res = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${146330554}/${"07982f50-e87b-4ee8-898d-99d9aba71297"}`,
+        `https://api.convertkit.com/v3/forms/8e66cc8226/subscribe`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            fields: [
-              {
-                name: "email",
-                value: formData.email,
-              },
-              {
-                name: "url",
-                value: formData.url,
-              },
-            ],
+            api_secret: process.env.NEXT_PUBLIC_CONVERTKIT_API_SECRET, // Add your Kit API secret
+            email: formData.email,
+            fields: {
+              url: formData.url, // Custom field for the URL
+            },
           }),
         }
       );
@@ -44,7 +37,10 @@ const SubmitModal = () => {
         throw new Error("Failed to submit form");
       }
 
-      setSubmitStatus("success");
+      const data = await res.json();
+      console.log("Form submitted successfully:", data);
+      setSubmitStatus('success');
+      
       // Reset form after successful submission
       setFormData({
         email: "",
@@ -52,7 +48,7 @@ const SubmitModal = () => {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitStatus("error");
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -91,14 +87,14 @@ const SubmitModal = () => {
       </div>
 
       {/* Status Messages */}
-      {submitStatus === "success" && (
-        <div className="w-full p-2 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
-          Thanks for your submission! We&apos;ll review it shortly.
+      {submitStatus === 'success' && (
+        <div className="w-full p-3 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
+          Thanks for your submission! You've been added to our newsletter.
         </div>
       )}
-
-      {submitStatus === "error" && (
-        <div className="w-full p-2 bg-red-100 border border-red-400 text-red-700 rounded-xl text-center">
+      
+      {submitStatus === 'error' && (
+        <div className="w-full p-3 bg-red-100 border border-red-400 text-red-700 rounded-xl text-center">
           Something went wrong. Please try again.
         </div>
       )}
