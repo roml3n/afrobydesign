@@ -4,7 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/context/ModalContext";
 import Header from "@/components/Header";
 
-export const ppNeueMontreal = localFont({
+const ppNeueMontreal = localFont({
   src: [
     {
       path: "./fonts/ppneuemontreal-book.otf",

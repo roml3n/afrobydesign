@@ -1,16 +1,54 @@
-import React from 'react'
+"use client";
 
-const FilterTag = ({tag, count} : {tag: string, count: number}) => {
+import React from "react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+
+type FilterTagProps = {
+  tag: string;
+  count: number;
+  type?: "category" | "font" | "tech";
+};
+
+const FilterTag = ({ tag, count, type = "category" }: FilterTagProps) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentFilter = searchParams.get(type);
+  const isActive = currentFilter === tag || (!currentFilter && tag === "All");
+
+  const createQueryString = (name: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value === "All") {
+      params.delete(name);
+    } else {
+      params.set(name, value);
+    }
+    return params.toString();
+  };
+
   return (
-    <div className="inline-flex items-start justify-center gap-0.5 px-3 py-2 relative bg-white rounded-lg overflow-hidden">
-    <div className="relative w-fit font-normal text-gray-5 text- text-center">
-    {tag}
-    </div>
-    <div className="relative w-fit opacity-80 font-normal text-gray-5 text-sm text-center">
-    {count}
-    </div>
-    </div>
-  )
-}
+    <Link
+      href={`${pathname}?${createQueryString(type, tag)}`}
+      className={`min-w-fit flex items-start justify-center gap-x-1 px-3 py-2 relative rounded-lg overflow-hidden transition-all duration-300 ${
+        isActive
+          ? "bg-blue-1 text-blue-10 border border-blue-10/20"
+          : "bg-white border border-gray-10/5 hover:bg-gray-1"
+      }`}
+      aria-label={`Filter by ${tag}`}
+      aria-pressed={isActive}
+    >
+      <p
+        className={`font-normal text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
+      >
+        {tag}
+      </p>
+      <p
+        className={`opacity-30 font-medium text-sm text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
+      >
+        {count}
+      </p>
+    </Link>
+  );
+};
 
-export default FilterTag
+export default FilterTag;
