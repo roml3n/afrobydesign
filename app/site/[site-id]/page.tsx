@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import MetadataFilterLink from "@/components/MetadataFilterLink";
-import ViewCounter from "@/app/site/[site-id]/ViewCounter";
+// import ViewCounter from "@/app/site/[site-id]/ViewCounter";
 
 type SiteDetailProps = {
   params: {
@@ -69,7 +69,7 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                   <p className="font-medium text-gray-5">Added {addedDate}</p>
                 </div>
                 {/* Always show views, defaulting to 0 if undefined */}
-                <div className="flex gap-1">
+                {/* <div className="flex gap-1">
                   <Image
                     src="/icons/viewed.svg"
                     width={16}
@@ -80,7 +80,7 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     siteId={params["site-id"]}
                     initialViews={site.views || 0}
                   />
-                </div>
+                </div> */}
               </div>
 
               {/* Stack */}
