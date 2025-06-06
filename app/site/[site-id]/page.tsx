@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import MetadataFilterLink from "@/components/MetadataFilterLink";
+import { getRelativeTimeString } from "@/lib/date";
 // import ViewCounter from "@/app/site/[site-id]/ViewCounter";
 
 type SiteDetailProps = {
@@ -21,12 +22,8 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
     notFound();
   }
 
-  // Format date
-  const addedDate = new Date(site.publishedAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  // Get relative time string
+  const relativeTime = getRelativeTimeString(site.publishedAt);
 
   // Debug log for views
   console.log("Views value:", site.views, "Type:", typeof site.views);
@@ -66,7 +63,9 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     height={16}
                     alt="Added on"
                   />
-                  <p className="font-medium text-gray-5">Added {addedDate}</p>
+                  <p className="font-medium text-gray-5">
+                    Added {relativeTime}
+                  </p>
                 </div>
                 {/* Always show views, defaulting to 0 if undefined */}
                 {/* <div className="flex gap-1">
