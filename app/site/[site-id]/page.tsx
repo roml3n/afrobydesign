@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
+import MetadataFilterLink from "@/components/MetadataFilterLink";
 
 type SiteDetailProps = {
   params: {
@@ -95,12 +96,12 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                   </div>
                   <div className="pl-[20px] flex flex-col gap-0">
                     {site.techStack.map((tech: string) => (
-                      <p
+                      <MetadataFilterLink
                         key={tech}
-                        className="font-normal text-gray-5 hover:text-gray-10 underline"
-                      >
-                        {tech}
-                      </p>
+                        type="tech"
+                        value={tech}
+                        displayText={tech}
+                      />
                     ))}
                   </div>
                 </div>
@@ -120,12 +121,12 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                   </div>
                   <div className="pl-[20px] flex flex-col gap-0">
                     {site.fonts.map((font: string) => (
-                      <p
+                      <MetadataFilterLink
                         key={font}
-                        className="font-normal text-gray-5 hover:text-gray-10 underline"
-                      >
-                        {font}
-                      </p>
+                        type="font"
+                        value={font}
+                        displayText={font}
+                      />
                     ))}
                   </div>
                 </div>
@@ -144,9 +145,11 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     <p className="font-medium text-gray-5">Category</p>
                   </div>
                   <div className="pl-[20px] flex flex-col gap-0">
-                    <p className="font-normal text-gray-5 hover:text-gray-10 underline">
-                      {site.category}
-                    </p>
+                    <MetadataFilterLink
+                      type="category"
+                      value={site.category}
+                      displayText={site.category}
+                    />
                   </div>
                 </div>
               )}
