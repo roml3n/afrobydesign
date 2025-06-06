@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
 type MetadataFilterLinkProps = {
@@ -15,7 +15,6 @@ const MetadataFilterLink = ({
   value,
   displayText,
 }: MetadataFilterLinkProps) => {
-  const pathname = usePathname(); // Should ideally be '/' for the gallery page
   const searchParams = useSearchParams();
 
   // Construct the new query string for filtering the main gallery page.
