@@ -29,7 +29,7 @@ const FilterTag = ({ tag, count, type = "category" }: FilterTagProps) => {
   return (
     <Link
       href={`${pathname}?${createQueryString(type, tag)}`}
-      className={`inline-flex items-start justify-center gap-0.5 px-3 py-2 relative rounded-lg overflow-hidden transition-all duration-300 ${
+      className={`min-w-fit flex items-start justify-center gap-x-1 px-3 py-2 relative rounded-lg overflow-hidden transition-all duration-300 ${
         isActive
           ? "bg-blue-1 text-blue-10 border border-blue-10/20"
           : "bg-white border border-gray-10/5 hover:bg-gray-1"
@@ -37,16 +37,16 @@ const FilterTag = ({ tag, count, type = "category" }: FilterTagProps) => {
       aria-label={`Filter by ${tag}`}
       aria-pressed={isActive}
     >
-      <div
-        className={`relative w-fit font-normal text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
+      <p
+        className={`font-normal text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
       >
         {tag}
-      </div>
-      <div
-        className={`relative w-fit opacity-80 font-normal text-sm text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
+      </p>
+      <p
+        className={`opacity-30 font-medium text-sm text-center ${isActive ? "text-blue-10" : "text-gray-5"}`}
       >
         {count}
-      </div>
+      </p>
     </Link>
   );
 };
