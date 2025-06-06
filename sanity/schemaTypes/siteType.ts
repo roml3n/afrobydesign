@@ -1,15 +1,17 @@
-export default {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "site",
   title: "Site",
   type: "document",
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -17,44 +19,44 @@ export default {
         source: "title",
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "fullScreenshot",
       title: "Full Screenshot",
       type: "image",
       options: {
         hotspot: true,
       },
-    },
-    {
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "externalLink",
       title: "External Link",
       type: "url",
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published At",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "fonts",
       title: "Fonts Used",
       type: "array",
@@ -62,8 +64,8 @@ export default {
       options: {
         layout: "tags",
       },
-    },
-    {
+    }),
+    defineField({
       name: "techStack",
       title: "Tech Stack",
       type: "array",
@@ -71,14 +73,14 @@ export default {
       options: {
         layout: "tags",
       },
-    },
-    {
+    }),
+    defineField({
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
-      validation: (Rule) => Rule.required(),
-    },
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
@@ -86,4 +88,4 @@ export default {
       media: "thumbnail",
     },
   },
-};
+});

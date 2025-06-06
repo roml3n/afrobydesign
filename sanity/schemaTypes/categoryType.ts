@@ -1,8 +1,7 @@
 import { TagIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
-import { Rule } from "sanity";
 
-export const categoryType = defineType({
+export default defineType({
   name: "category",
   title: "Category",
   type: "document",
@@ -12,7 +11,7 @@ export const categoryType = defineType({
       name: "name",
       title: "Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "slug",
@@ -22,12 +21,7 @@ export const categoryType = defineType({
         source: "name",
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
