@@ -6,6 +6,7 @@ import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import MetadataFilterLink from "@/components/MetadataFilterLink";
 import { getRelativeTimeString } from "@/lib/date";
+import type { Metadata } from "next";
 // import ViewCounter from "@/app/site/[site-id]/ViewCounter";
 
 type SiteDetailProps = {
@@ -165,4 +166,46 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
       <Footer />
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: SiteDetailProps): Promise<Metadata> {
+  const site = await getSiteBySlug(params["site-id"]);
+
+  if (!site) {
+    return {
+      title: "Site Not Found – Afro by Design",
+      description: "The requested site could not be found.",
+    };
+  }
+
+  return {
+    title: `${site.title} – Afro by Design`,
+    description:
+      site.description ||
+      "Discover this creative work featured on Afro by Design.",
+    openGraph: {
+      title: `${site.title} – Afro by Design`,
+      description:
+        site.description ||
+        "Discover this creative work featured on Afro by Design.",
+      images: [
+        {
+          url: site.fullScreenshot,
+          width: 1920,
+          height: 1080,
+          alt: `Screenshot of ${site.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${site.title} – Afro by Design`,
+      description:
+        site.description ||
+        "Discover this creative work featured on Afro by Design.",
+      images: [site.fullScreenshot],
+    },
+  };
 }
