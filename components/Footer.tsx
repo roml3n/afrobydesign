@@ -71,7 +71,7 @@ const Footer = () => {
           />
         </div>
 
-        <div className=" w-screen flex flex-col pt-[2px] bg-gradient-to-r from-transparent via-gray-5/30 to-transparent">
+        <div className=" w-screen flex flex-col -mt-[1px] pt-[1px] bg-gradient-to-r from-transparent via-gray-5/30 to-transparent">
           <div className="bg-white flex flex-col w-screen items-center pt-6 md:pt-8 lg:pt-12 pb-6 gap-12 md:gap-20 lg:gap-28">
             <div className="bg-white gap-4 flex flex-col w-[96%] md:w-[60%] lg:w-[40%]">
               <div className="flex flex-col items-center">

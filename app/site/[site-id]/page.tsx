@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import MetadataFilterLink from "@/components/MetadataFilterLink";
+import ViewCounter from "@/app/site/[site-id]/ViewCounter";
 
 type SiteDetailProps = {
   params: {
@@ -75,10 +76,10 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     height={16}
                     alt="Views"
                   />
-                  <p className="font-medium text-gray-5">
-                    Viewed {typeof site.views === "number" ? site.views : 0}{" "}
-                    times
-                  </p>
+                  <ViewCounter
+                    siteId={params["site-id"]}
+                    initialViews={site.views || 0}
+                  />
                 </div>
               </div>
 

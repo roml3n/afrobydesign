@@ -2,6 +2,17 @@ import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
+// Create a write client with token
+export const writeClient = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "prod",
+  apiVersion: "2024-03-19",
+  useCdn: false, // Never use CDN for writes
+  token: process.env.SANITY_API_TOKEN, // Token for write operations
+  perspective: "published",
+});
+
+// Read-only client (existing one)
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "prod",
@@ -32,7 +43,8 @@ export async function getSites() {
         publishedAt,
         fonts,
         techStack,
-        "category": category->name
+        "category": category->name,
+        views
       }
     `);
     console.log("Sites fetched:", sites?.length || 0, "sites");
@@ -66,7 +78,8 @@ export async function getSiteBySlug(slug: string) {
       publishedAt,
       fonts,
       techStack,
-      "category": category->name
+      "category": category->name,
+      views
     }
   `,
     { slug }
@@ -99,7 +112,8 @@ export async function getSitesByCategory(category: string) {
       publishedAt,
       fonts,
       techStack,
-      "category": category->name
+      "category": category->name,
+      views
     }
   `,
     { category }
@@ -121,7 +135,8 @@ export async function getSitesByFont(font: string) {
       publishedAt,
       fonts,
       techStack,
-      "category": category->name
+      "category": category->name,
+      views
     }
   `,
     { font }
@@ -143,7 +158,8 @@ export async function getSitesByTech(tech: string) {
       publishedAt,
       fonts,
       techStack,
-      "category": category->name
+      "category": category->name,
+      views
     }
   `,
     { tech }
@@ -152,5 +168,13 @@ export async function getSitesByTech(tech: string) {
 
 // Function to increment view count
 export async function incrementViewCount(siteId: string) {
-  return client.patch(siteId).inc({ views: 1 }).commit();
+  console.log("Incrementing views for site:", siteId);
+  try {
+    const result = await writeClient.patch(siteId).inc({ views: 1 }).commit();
+    console.log("View increment result:", result);
+    return result;
+  } catch (error) {
+    console.error("Error incrementing views:", error);
+    throw error;
+  }
 }
