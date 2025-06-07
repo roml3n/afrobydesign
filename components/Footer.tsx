@@ -107,12 +107,12 @@ const Footer = () => {
                     />
                   </div>
                   {submitStatus === "success" && (
-                    <div className="w-full mt-2 p-2 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
+                    <div className="w-full mt-2 p-2 bg-green-100 border border-green-400 text-green-700 rounded-[4px] text-center">
                       Thanks for subscribing!
                     </div>
                   )}
                   {submitStatus === "error" && (
-                    <div className="w-full mt-2 p-2 bg-red-100 border border-red-400 text-red-700 rounded-xl text-center">
+                    <div className="w-full mt-2 p-2 bg-red-100 border border-red-400 text-red-700 rounded-[4px] text-center">
                       Something went wrong. Please try again.
                     </div>
                   )}
