@@ -13,7 +13,7 @@ const Button = ({ label, href, onClick, className = "" }: ButtonProps) => {
     return (
       <Link
         href={href}
-        className={`text-center bg-gray-10 text-gray-0 rounded-lg md:rounded-xl px-3 md:px-6 py-2 md:py-4 text-sm md:text-base hover:bg-gray-9 transition-colors ${className}`}
+        className={`font-supply font-medium uppercase text-center bg-blue-main hover:bg-blue-hover text-gray-0 rounded-[4px] px-3 md:px-6 py-2 md:py-4 text-sm md:text-base transition-colors duration-300 ${className}`}
         aria-label={label}
       >
         {label}
@@ -24,7 +24,7 @@ const Button = ({ label, href, onClick, className = "" }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className={`text-center bg-gray-10 text-gray-0 rounded-lg md:rounded-xl px-3 md:px-6 py-2 md:py-4 text-sm md:text-base hover:bg-gray-9 transition-colors ${className}`}
+      className={`font-supply font-medium uppercase text-center bg-blue-main hover:bg-blue-hover text-gray-0 rounded-[4px] px-3 md:px-6 py-2 md:py-4 text-sm md:text-base transition-colors duration-300 ${className}`}
       aria-label={label}
     >
       {label}

@@ -95,7 +95,7 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     />
                     <p className="font-medium text-gray-5">Stack</p>
                   </div>
-                  <div className="pl-[20px] flex flex-col gap-0">
+                  <div className="pl-[20px]  flex flex-col gap-0">
                     {site.techStack.map((tech: string) => (
                       <MetadataFilterLink
                         key={tech}
@@ -120,7 +120,7 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     />
                     <p className="font-medium text-gray-5">Fonts</p>
                   </div>
-                  <div className="pl-[20px] flex flex-col gap-0">
+                  <div className="pl-[20px]  flex flex-col gap-0">
                     {site.fonts.map((font: string) => (
                       <MetadataFilterLink
                         key={font}
@@ -145,7 +145,7 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     />
                     <p className="font-medium text-gray-5">Category</p>
                   </div>
-                  <div className="pl-[20px] flex flex-col gap-0">
+                  <div className="pl-[20px] font-supply uppercase underline-offset-2 decoration-1 hover:decoration-2 flex flex-col gap-0">
                     <MetadataFilterLink
                       type="category"
                       value={site.category}

@@ -42,7 +42,7 @@ const Modal = ({ children }: ModalProps) => {
       role="dialog"
       aria-modal="true"
     >
-      <div ref={modalRef} className="relative">
+      <div ref={modalRef} className="relative w-full max-w-2xl px-4">
         {children}
       </div>
     </div>

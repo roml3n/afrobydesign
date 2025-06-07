@@ -8,13 +8,19 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        supply: ["var(--font-supply)"],
+        "pp-neue": ["var(--font-pp-neue-montreal)"],
+      },
       colors: {
         "gray-0": "#FFFFFF",
         "gray-1": "#F5F5F5",
         "gray-5": "#737373",
         "gray-10": "#171717",
-        "blue-0": "#EFF6FF",
-        "blue-1": "#DBEAFE",
+        "blue-main": "#1F35F9",
+        "blue-hover": "#1125D6",
+        "blue-5": "#ECEEFF",
+        "blue-10": "#6776FF",
       },
     },
   },

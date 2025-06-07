@@ -23,6 +23,25 @@ const ppNeueMontreal = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
+const ppSupplySans = localFont({
+  src: [
+    {
+      path: "./fonts/PPSupplySans-Regular.otf",
+      weight: "500",
+      style: "medium",
+    },
+    {
+      path: "./fonts/PPSupplySans-Ultralight.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-supply",
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "sans-serif"],
+});
+
 export const metadata: Metadata = {
   title: "Afro by Design – A Showcase of Exceptional African Digital Design",
   description:
@@ -77,9 +96,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={ppNeueMontreal.className}>
+    <html
+      lang="en"
+      className={`${ppNeueMontreal.className} ${ppSupplySans.variable}`}
+    >
       <body className="relative min-h-screen bg-gray-0 text-gray-10 antialiased">
-        <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-0 via-blue-0 to-transparent" />
+        <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-5 via-blue-5 to-transparent" />
         <ModalProvider>
           <Header />
           {children}
