@@ -81,6 +81,13 @@ export default defineType({
       to: [{ type: "category" }],
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "views",
+      title: "Views",
+      type: "number",
+      initialValue: 0,
+      description: "Number of times this site has been viewed",
+    }),
   ],
   preview: {
     select: {

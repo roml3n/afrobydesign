@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import { getSiteBySlug } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 import MetadataFilterLink from "@/components/MetadataFilterLink";
+import { getRelativeTimeString } from "@/lib/date";
+import type { Metadata } from "next";
+// import ViewCounter from "@/app/site/[site-id]/ViewCounter";
 
 type SiteDetailProps = {
   params: {
@@ -20,12 +23,8 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
     notFound();
   }
 
-  // Format date
-  const addedDate = new Date(site.publishedAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  // Get relative time string
+  const relativeTime = getRelativeTimeString(site.publishedAt);
 
   // Debug log for views
   console.log("Views value:", site.views, "Type:", typeof site.views);
@@ -65,21 +64,23 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
                     height={16}
                     alt="Added on"
                   />
-                  <p className="font-medium text-gray-5">Added {addedDate}</p>
+                  <p className="font-medium text-gray-5">
+                    Added {relativeTime}
+                  </p>
                 </div>
                 {/* Always show views, defaulting to 0 if undefined */}
-                <div className="flex gap-1">
+                {/* <div className="flex gap-1">
                   <Image
                     src="/icons/viewed.svg"
                     width={16}
                     height={16}
                     alt="Views"
                   />
-                  <p className="font-medium text-gray-5">
-                    Viewed {typeof site.views === "number" ? site.views : 0}{" "}
-                    times
-                  </p>
-                </div>
+                  <ViewCounter
+                    siteId={params["site-id"]}
+                    initialViews={site.views || 0}
+                  />
+                </div> */}
               </div>
 
               {/* Stack */}
@@ -165,4 +166,46 @@ export default async function SiteDetail({ params }: SiteDetailProps) {
       <Footer />
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: SiteDetailProps): Promise<Metadata> {
+  const site = await getSiteBySlug(params["site-id"]);
+
+  if (!site) {
+    return {
+      title: "Site Not Found – Afro by Design",
+      description: "The requested site could not be found.",
+    };
+  }
+
+  return {
+    title: `${site.title} – Afro by Design`,
+    description:
+      site.description ||
+      "Discover this creative work featured on Afro by Design.",
+    openGraph: {
+      title: `${site.title} – Afro by Design`,
+      description:
+        site.description ||
+        "Discover this creative work featured on Afro by Design.",
+      images: [
+        {
+          url: site.fullScreenshot,
+          width: 1920,
+          height: 1080,
+          alt: `Screenshot of ${site.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${site.title} – Afro by Design`,
+      description:
+        site.description ||
+        "Discover this creative work featured on Afro by Design.",
+      images: [site.fullScreenshot],
+    },
+  };
 }

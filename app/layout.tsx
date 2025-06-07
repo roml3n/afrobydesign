@@ -24,9 +24,51 @@ const ppNeueMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Afro by Design",
+  title: "Afro by Design – A Showcase of Exceptional African Digital Design",
   description:
-    "A showcase of the most beautiful and unique designs from the Africa.",
+    "Afro by Design curates the most creative and forward-thinking websites and apps made by African designers, developers, and studios. Celebrate African digital excellence.",
+  metadataBase: new URL("https://afrobydesign.vercel.app"),
+  keywords: [
+    "African design",
+    "UI/UX inspiration",
+    "web design Africa",
+    "Afro digital design",
+    "creative showcase",
+    "African apps",
+    "frontend design",
+    "design gallery",
+    "developer portfolio",
+    "Afro by Design",
+  ],
+  openGraph: {
+    title: "Afro by Design – A Showcase of Exceptional African Digital Design",
+    description:
+      "Explore the finest African-made websites and apps. Afro by Design curates standout digital work from African creatives across the continent.",
+    url: "https://afrobydesign.vercel.app",
+    siteName: "Afro by Design",
+    images: [
+      {
+        url: "https://afrobydesign.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Afro by Design – African Digital Excellence",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Afro by Design – A Showcase of African Digital Design",
+    description:
+      "A curated selection of Africa's best websites, apps, and digital experiences. Built for creatives, by creatives.",
+    images: ["https://afrobydesign.vercel.app/og-image.jpg"],
+    creator: "@afrobydesign",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

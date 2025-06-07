@@ -14,8 +14,6 @@ export default async function FilterBar() {
 
   return (
     <div className="relative w-full flex items-center justify-center">
-  
-      
       {/* Scrollable container */}
       <div
         className="flex h-fit flex-nowrap gap-2 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
