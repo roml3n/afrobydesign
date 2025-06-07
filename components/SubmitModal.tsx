@@ -104,7 +104,7 @@ const SubmitModal = () => {
 
       <div className="w-full flex flex-col gap-4">
         <div className="relative w-full">
-          <div className="w-full self-stretch p-4 rounded- bg-gray-1 border border-black/5 flex justify-start items-center gap-2">
+          <div className="w-full self-stretch p-4 rounded-[4px] bg-gray-1 border border-black/5 flex justify-start items-center gap-2">
             <Image
               src="/mail.svg"
               width={24}
@@ -127,7 +127,7 @@ const SubmitModal = () => {
         </div>
 
         <div className="relative w-full">
-          <div className="w-full self-stretch p-4 rounded- bg-gray-1 border border-black/5 flex justify-start items-center gap-2">
+          <div className="w-full self-stretch p-4 rounded-[4px] bg-gray-1 border border-black/5 flex justify-start items-center gap-2">
             <Image
               src="/link.svg"
               width={24}

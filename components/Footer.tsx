@@ -86,7 +86,7 @@ const Footer = () => {
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="relative w-full">
-                  <div className="w-full self-stretch p-4 bg-gray-1 rounded-xl flex justify-start items-center gap-2">
+                  <div className="w-full self-stretch p-4 rounded-[4px] bg-gray-1 border border-black/5 flex justify-start items-center gap-2">
                     <Image
                       src="/mail.svg"
                       width={24}
@@ -102,7 +102,7 @@ const Footer = () => {
                       placeholder="Your email address"
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-transparent text-gray-5 text-base font-normal outline-none placeholder:text-gray-5 disabled:opacity-50"
+                      className="w-full bg-transparent rounded-[4px] text-gray-5 text-base font-supply uppercase font-medium outline-none placeholder:text-gray-5/40 disabled:opacity-50"
                       aria-label="Email"
                     />
                   </div>
@@ -120,7 +120,7 @@ const Footer = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full text-center bg-gray-10 text-gray-0 rounded-xl py-4 text-base md:text-base hover:bg-gray-9 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-center font-supply uppercase font-medium bg-blue-main hover:bg-blue-hover transition-colors duration-300 text-white rounded-[4px] px-3 md:px-6 py-2 md:py-4 text-sm md:text-base  disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Subscribe to newsletter"
                 >
                   {isSubmitting ? "Subscribing..." : "Subscribe"}
