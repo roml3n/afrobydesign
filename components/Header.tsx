@@ -49,7 +49,7 @@ const Header = () => {
               <Image
                 className="relative w-5 h-5"
                 alt="Twitter"
-                src="/twitter.svg"
+                src="/Twitter.svg"
                 width={20}
                 height={20}
               />
@@ -63,7 +63,7 @@ const Header = () => {
               <Image
                 className="relative w-6 h-6"
                 alt="Github"
-                src="/github.svg"
+                src="/Github.svg"
                 width={24}
                 height={24}
               />

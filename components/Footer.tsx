@@ -142,7 +142,7 @@ const Footer = () => {
               >
                 <div className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-colors duration-300">
                   <Image
-                    src="/twitter-circle.svg"
+                    src="/Twitter-Circle.svg"
                     alt="twitter icon"
                     width={24}
                     height={24}
