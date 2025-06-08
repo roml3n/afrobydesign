@@ -29,14 +29,14 @@ const Header = () => {
             : ""
         }`}
       >
-        <div className="flex mx-auto w-[96%] max-w-[1600px] justify-between">
+        <div className="flex mx-auto w-[96%] max-w-[1600px] justify-between items-center">
           <Link href="/">
             <Image
-              src="/logo.svg"
+              src="/abd-wordmark.svg"
               alt="Afro by Design"
               width={100}
               height={100}
-              className="w-10 h-10"
+              className="w-36 "
             />
           </Link>
           <div className="flex items-center gap-2">

@@ -175,18 +175,18 @@ export async function generateMetadata({
 
   if (!site) {
     return {
-      title: "Site Not Found – Afro by Design",
+      title: "Site Not Found | Afro by Design",
       description: "The requested site could not be found.",
     };
   }
 
   return {
-    title: `${site.title} – Afro by Design`,
+    title: `${site.title} | Afro by Design`,
     description:
       site.description ||
       "Discover this creative work featured on Afro by Design.",
     openGraph: {
-      title: `${site.title} – Afro by Design`,
+      title: `${site.title} | Afro by Design`,
       description:
         site.description ||
         "Discover this creative work featured on Afro by Design.",
@@ -201,7 +201,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${site.title} – Afro by Design`,
+      title: `${site.title} | Afro by Design`,
       description:
         site.description ||
         "Discover this creative work featured on Afro by Design.",
