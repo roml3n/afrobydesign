@@ -63,15 +63,15 @@ const Footer = () => {
       <div className="flex flex-col items-center mx-auto w-[96%] max-w-[1600px]">
         <div className="w-full md:w-[50%] lg:w-[40%]">
           <Image
-            src="/footer-image.png"
-            alt=""
+            src="/logo-sticker.svg"
+            alt="logo"
             width={2000}
             height={2000}
-            className="img"
+            className="img h-24 md:h-36 mb-8"
           />
         </div>
 
-        <div className=" w-screen flex flex-col pt-[2px] bg-gradient-to-r from-transparent via-gray-5/30 to-transparent">
+        <div className=" w-screen flex flex-col pt-[1px] bg-gradient-to-r from-transparent via-gray-5/30 to-transparent">
           <div className="bg-white flex flex-col w-screen items-center pt-6 md:pt-8 lg:pt-12 pb-6 gap-12 md:gap-20 lg:gap-28">
             <div className="bg-white gap-4 flex flex-col w-[96%] md:w-[60%] lg:w-[40%]">
               <div className="flex flex-col items-center">
@@ -120,7 +120,7 @@ const Footer = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full text-center font-supply uppercase font-medium bg-blue-main hover:bg-blue-hover transition-colors duration-300 text-white rounded-[4px] px-3 md:px-6 py-2 md:py-4 text-sm md:text-base  disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-center font-supply uppercase font-medium bg-blue-main hover:bg-blue-hover transition-colors duration-300 text-white rounded-[4px] px-3 md:px-6 py-3 md:py-4 text-sm md:text-base  disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Subscribe to newsletter"
                 >
                   {isSubmitting ? "Subscribing..." : "Subscribe"}
@@ -130,7 +130,7 @@ const Footer = () => {
 
             {/* signature */}
             <div className="flex gap-1 justify-center items-center">
-              <div className="font-normal text-gray-5 text-sm md:text-base">
+              <div className="font-supply font-normal text-gray-5 text-sm md:text-base">
                 Built with love by
               </div>
 
@@ -148,7 +148,7 @@ const Footer = () => {
                     height={24}
                   />
                 </div>
-                <div className="font-normal text-gray-5 group-hover:text-gray-10 text-sm md:text-base transition-colors duration-300">
+                <div className="font-supply font-normal text-gray-5 group-hover:text-gray-10 text-sm md:text-base transition-colors duration-300">
                   /roml3n
                 </div>
               </Link>

@@ -71,9 +71,9 @@ const SubmitModal = () => {
       onSubmit={handleSubmit}
       className="relative mx-auto rounded-[24px] w-full md:w-[80%] self-center flex flex-col gap-6 items-center p-5 md:p-6 bg-gradient-to-b from-blue-5 to-white border border-black/20"
     >
-      <div className="relative w-28 h-28">
+      <div className="relative w-16 md:w-24 aspect-square">
         <Image
-          src="/logo-submit.png"
+          src="/logo-sticker.svg"
           fill
           alt="Afro by Design logo"
           // className="w-24 h-24"
@@ -152,7 +152,7 @@ const SubmitModal = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full text-center font-supply uppercase font-medium bg-blue-main hover:bg-blue-hover transition-colors duration-300 text-white rounded-[4px] px-3 md:px-6 py-2 md:py-4 text-sm md:text-base  disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full text-center font-supply uppercase font-medium bg-blue-main hover:bg-blue-hover transition-colors duration-300 text-white rounded-[4px] px-3 md:px-6 py-3 md:py-4 text-sm md:text-base  disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Submit form"
         >
           {isSubmitting ? "Submitting..." : "Submit"}
