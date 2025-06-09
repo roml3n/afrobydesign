@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ModalProvider } from "@/context/ModalContext";
 import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/next";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -100,6 +101,7 @@ export default function RootLayout({
       lang="en"
       className={`${ppNeueMontreal.className} ${ppSupplySans.variable}`}
     >
+      <Analytics />
       <body className="relative min-h-screen bg-gray-0 text-gray-10 antialiased">
         <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-5 via-blue-5 to-transparent" />
         <ModalProvider>
