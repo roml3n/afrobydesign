@@ -44,9 +44,9 @@ const ppSupplySans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Afro by Design | A Showcase of Exceptional African Digital Design",
+  title: "Afro by Design | Showcasing African Design",
   description:
-    "Afro by Design curates the most creative and forward-thinking websites and apps made by African designers, developers, and studios. Celebrate African digital excellence.",
+    "Curating the most creative and forward-thinking websites and apps made by African designers, developers, and studios.",
   metadataBase: new URL("https://afrobydesign.vercel.app"),
   keywords: [
     "African design",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
     "Afro by Design",
   ],
   openGraph: {
-    title: "Afro by Design | A Showcase of Exceptional African Digital Design",
+    title: "Afro by Design | Showcasing African Design",
     description:
-      "Explore the finest African-made websites and apps. Afro by Design curates standout digital work from African creatives across the continent.",
+      "Explore the finest of African-made digital design. Afro by Design curates standout digital work from African creatives across the continent.",
     url: "https://afrobydesign.vercel.app",
     siteName: "Afro by Design",
     images: [
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Afro by Design | A Showcase of African Digital Design",
+    title: "Afro by Design | Showcasing African Digital Design",
     description:
       "A curated selection of Africa's best websites, apps, and digital experiences. Built for creatives, by creatives.",
     images: ["https://afrobydesign.vercel.app/og-image.png"],
