@@ -54,7 +54,7 @@ const Header = () => {
                 height={20}
               />
             </Link>
-            <Link
+            {/* <Link
               className="flex w-12 h-12 items-center justify-center gap-2.5 rounded-xl hover:bg-gray-10/10 transition-colors duration-300"
               href="https://github.com/roml3n/afrobydesign"
               target="_blank"
@@ -67,7 +67,7 @@ const Header = () => {
                 width={24}
                 height={24}
               />
-            </Link>
+            </Link> */}
             <Button label="Submit" onClick={openModal} />
           </div>
         </div>

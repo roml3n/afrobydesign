@@ -26,6 +26,7 @@
 # misc
 .DS_Store
 *.pem
+userinput.py
 
 # debug
 npm-debug.log*
