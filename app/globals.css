@@ -8,12 +8,21 @@
     --foreground: 0 0% 3.9%;
   }
 
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 96%;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-gray-0 text-gray-10;
+  }
+
+  .dark body {
+    @apply bg-gray-10 text-gray-1;
   }
   /* 
   div {

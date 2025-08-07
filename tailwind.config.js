@@ -6,6 +6,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./sanity/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -21,6 +22,9 @@ module.exports = {
         "blue-hover": "#1125D6",
         "blue-5": "#ECEEFF",
         "blue-10": "#6776FF",
+        "dark-card": "#1E1E1E",
+        "dark-border": "#333333",
+        "dark-blue-5": "#10142a",
       },
     },
   },

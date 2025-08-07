@@ -6,6 +6,7 @@ import Button from "./Button";
 import { useModal } from "@/context/ModalContext";
 import SubmitModal from "./SubmitModal";
 import Modal from "./Modal";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const { openModal } = useModal();
@@ -68,6 +69,7 @@ const Header = () => {
                 height={24}
               />
             </Link>
+          <ThemeToggle />
             <Button label="Submit" onClick={openModal} />
           </div>
         </div>

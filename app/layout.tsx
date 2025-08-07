@@ -4,6 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/context/ModalContext";
 import Header from "@/components/Header";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -103,11 +104,18 @@ export default function RootLayout({
     >
       <Analytics />
       <body className="relative min-h-screen bg-gray-0 text-gray-10 antialiased">
-        <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-5 via-blue-5 to-transparent" />
-        <ModalProvider>
-          <Header />
-          {children}
-        </ModalProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="absolute top-0 -z-[200] w-screen h-[30%] bg-gradient-to-b from-blue-5 via-blue-5 to-transparent dark:from-dark-blue-5 dark:via-dark-blue-5" />
+          <ModalProvider>
+            <Header />
+            {children}
+          </ModalProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
